@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../App.css'
-import {v4 as uuidV4} from 'uuid'
+// import {v4 as uuidV4} from 'uuid'
 // this is used to generate random ids
 export default function Login(prop) {
     let id = useRef()
@@ -15,7 +15,7 @@ export default function Login(prop) {
     }
     function createNewId(){
         prop.set(()=>{
-          return [uuidV4(),"something"]
+          return [id.current.value, pass.current.value]
         })
     }
   return (

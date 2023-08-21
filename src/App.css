@@ -28,12 +28,12 @@
   color: #61dafb;
 }
 .dashboard{
-  display: block;
+  display: flex;
   width: 100%;
 }
 .sidebar{
   height: 100vh;
-  width: 39vmin!important;
+  width: 39%!important;
   font-size: 2vmin;
 }
 .sidebarbutton{
@@ -46,7 +46,10 @@
   border-right: 1px solid lightgrey;
   border-top: 1px solid lightgrey;
 }
-
+.convobox{
+  height: 100vh;
+  width: 61%!important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

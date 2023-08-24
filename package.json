@@ -2,7 +2,7 @@
     "name": "myapp",
     "version": "0.1.0",
     "private": true,
-    "homepage":"https://shashwatmishra2411.github.io/Chatting-app-frontend/",
+    "homepage": "https://shashwatmishra2411.github.io/Chatting-app-frontend/",
     "dependencies": {
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",

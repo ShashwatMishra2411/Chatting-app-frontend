@@ -50,6 +50,19 @@
   height: 100vh;
   width: 61%!important;
 }
+.convodisplay{
+  overflow: scroll;
+  background-color: whitesmoke;
+}
+.message{
+  background-color: rgb(65, 114, 235);
+  color: white;
+  font-size: 2.5vmin;
+}
+.sender{
+  color: grey;
+  font-size: 2vmin;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

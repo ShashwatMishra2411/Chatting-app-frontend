@@ -15,7 +15,7 @@ export default function Dashboard(prop) {
   return (
     <div className="dashboard">
     <Sidebar id = {id}></Sidebar>
-    {selectedConversation && <OpenConvo/>}
+    {selectedConversation && <OpenConvo id={id}/>}
     </div>
     
   )

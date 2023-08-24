@@ -1,6 +1,7 @@
-import React,{useContext, useState} from 'react'
+import React,{useContext, useState, useEffect, useCallback} from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
 import { useContacts } from './createContact'
+import { useSocket } from './createSocket'
 const ConvoContext = React.createContext()
 
 export function useConvo(){
@@ -10,12 +11,16 @@ export default function Convoprovider({id,children}) {
     const {contacts} = useContacts()
     let [conversations, setConversations] = useLocalStorage('conversations',[])
     const [selectedConversationIndex, setselectedConversationIndex] = useState(0)
+    const socket = useSocket()
+
+
+
     function createConversation(recipients){
         setConversations(prev=>{
             return [...prev,{recipients, messages:[]}]
         })
     }
-    function addMessageToConversation({recipients, text, sender}){
+    const addMessageToConversation = useCallback(({recipients, text, sender})=>{
         // console.log({sender})
         setConversations(prev=>{
             let madeChange = false
@@ -35,9 +40,19 @@ export default function Convoprovider({id,children}) {
                 return [...prev,{recipients, messages:[newMessage]}]
             }
         })
-    }
+    },[setConversations])
+    useEffect(()=>{
+        if(socket == null)return
+        console.log("hi")
+        console.log(socket)
+        socket.on('recieve-message', addMessageToConversation)
+        return ()=>socket.off('recieve-message')
+        
+    },[socket,addMessageToConversation])
     function sendMessage(recipients,text){
         // console.log(id)
+        socket.emit('send-message', {recipients, text,sender:id[0]})
+        console.log(socket)
         addMessageToConversation({recipients, text, sender:id[0]})
     }
     function arrayEquality(a,b){

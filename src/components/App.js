@@ -6,6 +6,7 @@ import UseLocalStorage from '../hooks/useLocalStorage';
 import Dashboard from './Dashboard';
 import Convoprovider from '../contexts/createConvo';
 import Contactprovider from '../contexts/createContact';
+import SocketProvider from '../contexts/createSocket';
 
 function App() {
   let [id,setID] = UseLocalStorage('id',[])
@@ -17,6 +18,7 @@ function App() {
       <Login set={setID}>
       </Login>
       </div>:
+      <SocketProvider id={id}>
     <Contactprovider>
       <Convoprovider id={id}>
         <div className="App">
@@ -25,6 +27,7 @@ function App() {
       </div>
     </Convoprovider>
     </Contactprovider>
+    </SocketProvider>
   );
 }
 

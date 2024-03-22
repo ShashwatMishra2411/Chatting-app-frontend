@@ -18,7 +18,7 @@ function App() {
       <Login set={setID}>
       </Login>
       </div>:
-      <SocketProvider id={id}>
+      <SocketProvider id={id[0]}>
     <Contactprovider>
       <Convoprovider id={id}>
         <div className="App">

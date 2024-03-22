@@ -21,7 +21,7 @@ export default function Convoprovider({id,children}) {
         })
     }
     const addMessageToConversation = useCallback(({recipients, text, sender})=>{
-        // console.log({sender})
+        console.log({sender})
         setConversations(prev=>{
             let madeChange = false
             const newMessage = {sender, text}
@@ -45,13 +45,13 @@ export default function Convoprovider({id,children}) {
         if(socket == null)return
         console.log("hi")
         console.log(socket)
-        socket.on('recieve-message', addMessageToConversation)
-        return ()=>socket.off('recieve-message')
+        socket.on('receive-message', addMessageToConversation)
+        return ()=>socket.off('receive-message')
         
     },[socket,addMessageToConversation])
     function sendMessage(recipients,text){
         // console.log(id)
-        socket.emit('send-message', {recipients, text,sender:id[0]})
+        socket.emit('send-message', {recipients, text})
         console.log(socket)
         addMessageToConversation({recipients, text, sender:id[0]})
     }

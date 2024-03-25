@@ -10,7 +10,7 @@ export function useSocket(){
 export default function SocketProvider({id, children}) {
     const [socket, setsocket] = useState()
     useEffect(() =>{
-        const newSocket = io('http://3.108.191.77:5000',{query :{id}})
+        const newSocket = io('https://chatting-app-zd1t.onrender.com',{query :{id}})
         setsocket(newSocket)
         return () => newSocket.close()
     },[id])
